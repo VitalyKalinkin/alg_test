@@ -60,7 +60,7 @@ namespace AlgorithmTest.Test
 
             foreach (var enumerableItem in _enumerable)
             {
-                if (_index > 0 && _comparer(previous, enumerableItem) >= 0)
+                if (_index > 0 && _comparer(previous, enumerableItem) > 0)
                 {
                     return false;
                 }

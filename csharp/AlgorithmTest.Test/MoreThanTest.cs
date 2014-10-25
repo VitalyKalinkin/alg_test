@@ -36,6 +36,18 @@ namespace AlgorithmTest.Test
         }
 
         [Test]
+        public void ArrayWithDuplicates()
+        {
+            Assert.That(new[] { 1, 2, 2, 3 }, MoreThan.Sorted<int>());
+        }
+
+        [Test]
+        public void ArrayWithDuplicatesReversedComparer()
+        {
+            Assert.That(new[] { 3, 2, 2, 1 }, MoreThan.Sorted<int>((x, y) => y.CompareTo(x)));
+        }
+
+        [Test]
         public void UnsortedArray()
         {
             Assert.That(MoreThan.Sorted<int>().Resolve().Matches(new[] { 1, 3, 2 }), Is.False);
@@ -51,6 +63,12 @@ namespace AlgorithmTest.Test
         public void UnsortedArrayReversedComparer()
         {
             Assert.That(MoreThan.Sorted<int>((x, y) => y.CompareTo(x)).Resolve().Matches(new[] { 1, 3, 2 }), Is.False);
+        }
+
+        [Test]
+        public void ArrayWithDuplicatesRevesedComparer()
+        {
+            Assert.That(MoreThan.Sorted<int>((x, y) => y.CompareTo(x)).Resolve().Matches(new[] { 1, 2, 2, 3 }), Is.False);
         }
     }
 }

@@ -15,6 +15,8 @@ namespace AlgorithmTest.Test
             new[] {3, 2},
             new[] {2, 3},
             new[] {1},
+            new[] {4, 3, 2, 1},
+            new[] {4, 3, 2, 1, 17, 5, 18, 23, 47, 13, 56, -10, 99},
             new[] {10, 15, -30, 11, 42, 56, 80, 90, 103, 11, -25},
 
             #region Big Data

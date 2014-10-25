@@ -9,12 +9,9 @@ namespace AlgorithmTest
         {
             for (var i = 0; i < source.Count; ++i)
             {
-                for (var j = i; j > 0; --j)
+                for (var j = i; j > 0 && comparator(source[j], source[j - 1]) < 0; --j)
                 {
-                    if (comparator(source[j], source[j - 1]) < 0)
-                    {
-                        source.Swap(j, j - 1);
-                    }
+                    source.Swap(j, j - 1);
                 }
             }
 

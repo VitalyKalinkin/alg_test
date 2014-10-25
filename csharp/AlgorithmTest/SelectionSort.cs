@@ -19,9 +19,7 @@ namespace AlgorithmTest
                     }
                 }
 
-                T temp = source[i];
-                source[i] = source[minIndex];
-                source[minIndex] = temp;
+                source.Swap(i, minIndex);
             }
 
             return source;

@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extentions.cs" />
     <Compile Include="SelectionSortTest.cs" />
     <Compile Include="InsertionSortTest.cs" />
     <Compile Include="ShellSortTest.cs" />

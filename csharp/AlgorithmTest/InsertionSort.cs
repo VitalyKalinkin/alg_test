@@ -1,21 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlgorithmTest
 {
     public static class InsertionSort
     {
-        public static ICollection<T> Sort<T>(ICollection<T> source, Func<T, T, int> comparator)
+        public static IList<T> Sort<T>(IList<T> source, Func<T, T, int> comparator)
         {
+            for (var i = 0; i < source.Count; ++i)
+            {
+                for (var j = i; j > 0; --j)
+                {
+                    if (comparator(source[j], source[j - 1]) < 0)
+                    {
+                        source.Swap(j, j - 1);
+                    }
+                }
+            }
+
             return source;
         }
 
-        public static ICollection<T> Sort<T>(ICollection<T> source) where T : IComparable<T>
+        public static IList<T> Sort<T>(IList<T> source) where T : IComparable<T>
         {
-            return Sort(source, (x, y) => x.CompareTo(y)); ;
+            return Sort(source, (x, y) => x.CompareTo(y));
         }
     }
 }

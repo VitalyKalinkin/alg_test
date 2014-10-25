@@ -9,7 +9,7 @@ using NUnit.Framework.Constraints;
 
 namespace AlgorithmTest.Test
 {
-    class MoreIs
+    class MoreThan
     {
         public static IResolveConstraint Sorted<T>(Func<T, T, int> comparer)
         {

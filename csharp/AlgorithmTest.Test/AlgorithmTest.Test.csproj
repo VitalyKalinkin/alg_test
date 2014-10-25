@@ -43,8 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MergeSortTest.cs" />
-    <Compile Include="MoreIs.cs" />
-    <Compile Include="MoreIsTest.cs" />
+    <Compile Include="MoreThan.cs" />
+    <Compile Include="MoreThanTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

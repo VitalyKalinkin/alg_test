@@ -9,5 +9,10 @@ namespace AlgorithmTest
         {
             return source;
         }
+
+        public static ICollection<T> Sort<T>(ICollection<T> source) where T : IComparable<T>
+        {
+            return Sort(source, (x, y) => x.CompareTo(y));;
+        }
     }
 }

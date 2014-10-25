@@ -631,8 +631,28 @@ namespace AlgorithmTest.Test
                 -1407, -4238, 2100, -4934, -3151, -3143, -1219, 2901, -2498, -3011, -2626, 862, -51, 1087, 215, 226, 590,
                 3292, 887, -304, -4375, 349, 3547, -1140, -2319, -712, 1157, 4737, 3492, 329, -1568, -1571, 699, 2422,
                 1665
-            }
+            },
             #endregion
         };
+
+        protected static readonly int[][] ToReallyHardSortWorkBase =
+        {
+            new int[20000],
+            new int[100000],
+            new int[1000000],
+        };
+
+        static SortingTest()
+        {
+            foreach (var toFill in ToReallyHardSortWorkBase)
+            {
+                var rand = new Random();
+
+                for (var i = 0; i < toFill.Length; ++i)
+                {
+                    toFill[i] = rand.Next();
+                }
+            }
+        }
     }
 }

@@ -8,9 +8,17 @@ namespace AlgorithmTest.Test
     public class ShellSortTest : SortingTest
     {
         private static readonly int[][] ToSort = ToSortBase;
+        private static readonly int[][] ToReallyHardSortWork = ToReallyHardSortWorkBase;
 
-        [TestCaseSource("ToSort")]
+        [Test, TestCaseSource("ToSort")]
         public void SimpleCases(IList<int> paramCollection)
+        {
+            var result = ShellSort.Sort(paramCollection.Clone().ToList());
+            Assert.That(result, MoreThan.Sorted<int>());
+        }
+
+        [Test, TestCaseSource("ToReallyHardSortWork")]
+        public void HeavyCases(IList<int> paramCollection)
         {
             var result = ShellSort.Sort(paramCollection.Clone().ToList());
             Assert.That(result, MoreThan.Sorted<int>());

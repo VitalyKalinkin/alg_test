@@ -10,7 +10,22 @@ namespace AlgorithmTest
             var aux = new T[source.Count];
             Sort(source, aux, 0, source.Count - 1, comparator);
             return source;
-        }   
+        }
+
+        public static IList<T> SortNonRecursive<T>(IList<T> source, Func<T, T, int> comparator)
+        {
+            var aux = new T[source.Count];
+
+            for (var sz = 1; sz < source.Count; sz *= 2)
+            {
+                for (var lo = 0; lo < source.Count - sz; lo += 2*sz)
+                {
+                    Merge(source, aux, lo, lo + sz - 1, Math.Min(lo + sz + sz - 1, source.Count - 1), comparator);
+                }
+            }
+
+            return source;
+        }
 
         private static void Sort<T>(IList<T> source, IList<T> aux, int lo, int hi, Func<T, T, int> comparator)
         {
@@ -61,6 +76,10 @@ namespace AlgorithmTest
         public static IList<T> Sort<T>(IList<T> source) where T : IComparable<T>
         {
             return Sort(source, (x, y) => x.CompareTo(y));;
+        }
+        public static IList<T> SortNonRecursive<T>(IList<T> source) where T : IComparable<T>
+        {
+            return SortNonRecursive(source, (x, y) => x.CompareTo(y)); ;
         }
     }
 }

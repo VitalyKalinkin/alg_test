@@ -20,7 +20,21 @@ namespace AlgorithmTest.Test
         [TestCaseSource("ToReallyHardSortWork")]
         public void HeavyCases(IList<int> paramCollection)
         {
-            var result = ShellSort.Sort(paramCollection.Clone().ToList());
+            var result = MergeSort.Sort(paramCollection.Clone().ToList());
+            Assert.That(result, MoreThan.Sorted<int>());
+        }
+
+        [TestCaseSource("ToSort")]
+        public void SimpleNonRecursiveCases(IList<int> paramCollection)
+        {
+            var result = MergeSort.SortNonRecursive(paramCollection.Clone().ToList());
+            Assert.That(result, MoreThan.Sorted<int>());
+        }
+
+        [TestCaseSource("ToReallyHardSortWork")]
+        public void HeavyNonRecursiveCases(IList<int> paramCollection)
+        {
+            var result = MergeSort.SortNonRecursive(paramCollection.Clone().ToList());
             Assert.That(result, MoreThan.Sorted<int>());
         }
     }

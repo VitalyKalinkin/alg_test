@@ -8,22 +8,14 @@ namespace AlgorithmTest
 
         public static IList<T> Sort<T>(IList<T> source, Func<T, T, int> comparator)
         {
-            Shuffle(source);
+            source.Shuffle();
 
             SortImpl(source, 0, source.Count - 1, comparator);
             
-
             return source;
         }
 
-        private static void Shuffle<T>(IList<T> source)
-        {
-            var rand = new Random();
-            for (var i = 0; i < source.Count; ++i)
-            {
-                source.Swap(i, rand.Next(i, source.Count));
-            }
-        }
+        
 
         private static void SortImpl<T>(IList<T> source, int lo, int hi, Func<T, T, int> comparator)
         {

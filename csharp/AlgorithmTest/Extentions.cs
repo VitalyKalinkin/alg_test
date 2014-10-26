@@ -17,5 +17,14 @@ namespace AlgorithmTest
             list[i] = list[j];
             list[j] = temp;
         }
+
+        public static void Shuffle<T>(this IList<T> source)
+        {
+            var rand = new Random();
+            for (var i = 0; i < source.Count; ++i)
+            {
+                source.Swap(i, rand.Next(i, source.Count));
+            }
+        }
     }
 }

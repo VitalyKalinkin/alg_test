@@ -23,5 +23,19 @@ namespace AlgorithmTest.Test
             var result = QuickSort.Sort(paramCollection.Clone().ToList());
             Assert.That(result, MoreThan.Sorted<int>());
         }
+
+        [TestCaseSource("ToSort")]
+        public void SimpleCases3Way(IList<int> paramCollection)
+        {
+            var result = QuickSort.Sort3Way(paramCollection.Clone().ToList());
+            Assert.That(result, MoreThan.Sorted<int>());
+        }
+
+        [TestCaseSource("ToReallyHardSortWork")]
+        public void HeavyCases3Way(IList<int> paramCollection)
+        {
+            var result = QuickSort.Sort3Way(paramCollection.Clone().ToList());
+            Assert.That(result, MoreThan.Sorted<int>());
+        }
     }
 }

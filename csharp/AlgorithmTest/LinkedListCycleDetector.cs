@@ -7,7 +7,7 @@
             var slow = head;
             var fast = head;
 
-            while (true)
+            do
             {
                 if (slow.NextNode == null || fast.NextNode == null || fast.NextNode.NextNode == null)
                 {
@@ -16,12 +16,9 @@
 
                 slow = slow.NextNode;
                 fast = fast.NextNode.NextNode;
+            } while (slow != fast);
 
-                if (slow == fast)
-                {
-                    return FindExactCycleStartNode(slow, head);
-                }
-            }
+            return FindExactCycleStartNode(slow, head);
         }
 
         private static SingleLinkedListNode<T> FindExactCycleStartNode<T>(SingleLinkedListNode<T> meetPoint, SingleLinkedListNode<T> head)

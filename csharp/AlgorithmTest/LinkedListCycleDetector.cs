@@ -37,7 +37,7 @@
             // Sets the long pointer to the Kth node, where k is the cycle length.
             var longPointer = head;
 
-            for (var i = 0; i < cycleLength; ++i)
+            while (cycleLength-- > 0)
             {
                 longPointer = longPointer.NextNode;
             }

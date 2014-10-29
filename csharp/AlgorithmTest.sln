@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmTest", "AlgorithmTest.csproj", "{B8943B89-558A-4069-92C7-9D0B2BBAAA39}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmTest", "AlgorithmTest\AlgorithmTest.csproj", "{B8943B89-558A-4069-92C7-9D0B2BBAAA39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmTest.Test", "..\AlgorithmTest.Test\AlgorithmTest.Test.csproj", "{F1FE5A83-82FC-445D-8A7B-A98FFFE9FA75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmTest.Test", "AlgorithmTest.Test\AlgorithmTest.Test.csproj", "{F1FE5A83-82FC-445D-8A7B-A98FFFE9FA75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

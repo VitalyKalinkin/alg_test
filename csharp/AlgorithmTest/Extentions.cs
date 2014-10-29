@@ -26,5 +26,25 @@ namespace AlgorithmTest
                 source.Swap(i, rand.Next(i, source.Count));
             }
         }
+
+        public static SingleLinkedListNode<T> GetNthNode<T>(this SingleLinkedListNode<T> head, int n)
+        {
+            var currentNode = head;
+            for (var i = 0; i < n && currentNode != null; i++)
+            {
+                currentNode = currentNode.NextNode;
+            }
+
+            return currentNode;
+        }
+
+        public static SingleLinkedListNode<T> GetTail<T>(this SingleLinkedListNode<T> head)
+        {
+            var currentNode = head;
+            while (currentNode.NextNode != null)
+                currentNode = currentNode.NextNode;
+
+            return currentNode;
+        }
     }
 }

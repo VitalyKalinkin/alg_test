@@ -27,6 +27,10 @@ namespace AlgorithmTest
                 {
                     _array.Swap(nodeIndex/2, nodeIndex);
                 }
+                else
+                {
+                    break;
+                }
 
                 nodeIndex /= 2;
             }

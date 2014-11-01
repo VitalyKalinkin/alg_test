@@ -45,6 +45,7 @@
     <Compile Include="BreadthFirstSearchTest.cs" />
     <Compile Include="DepthFirstSearchTest.cs" />
     <Compile Include="LinkedListCycleDetectorTest.cs" />
+    <Compile Include="MaximumBinaryHeapTest.cs" />
     <Compile Include="StreamSelectTest.cs" />
     <Compile Include="QuickSelectTest.cs" />
     <Compile Include="QuickSortTest.cs" />

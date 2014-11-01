@@ -44,7 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DepthFirstSearch.cs" />
     <Compile Include="Extentions.cs" />
+    <Compile Include="GeneralTreeNode.cs" />
     <Compile Include="LinkedListCycleDetector.cs" />
     <Compile Include="QuickSort.cs" />
     <Compile Include="QuickSelection.cs" />

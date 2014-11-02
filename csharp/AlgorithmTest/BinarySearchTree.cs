@@ -209,14 +209,29 @@ namespace AlgorithmTest
 
         public IEnumerable<K> TraverseKeys()
         {
-            return TraverseKeys(_root);
-        }
+            if (_root == null)
+                yield break;
 
-        private static IEnumerable<K> TraverseKeys(BinaryTreeNode<K, T> root)
-        {
-            if (root == null)
-                return Enumerable.Empty<K>();
-            return TraverseKeys(root.Left).Concat(new[] {root.Key}).Concat(TraverseKeys(root.Right));
+            var traversalStack = new Stack<BinaryTreeNode<K, T>>();
+            var currentNode = _root;
+
+            while (true)
+            {
+                if (currentNode != null)
+                {
+                    traversalStack.Push(currentNode);
+                    currentNode = currentNode.Left;
+                }
+                else
+                {
+                    if (traversalStack.Count == 0)
+                        yield break;
+
+                    currentNode = traversalStack.Pop();
+                    yield return currentNode.Key;
+                    currentNode = currentNode.Right;
+                }
+            }
         }
 
         public void DeleteMin()

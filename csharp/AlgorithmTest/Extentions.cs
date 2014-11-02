@@ -54,13 +54,13 @@ namespace AlgorithmTest
             return IsValidBstRec(root, int.MinValue, int.MaxValue);
         }
 
-        private static bool IsValidBstRec<T>(BinaryTreeNode<int, T> root, int minValue, int maxValue)
+        public static bool IsValidBstRec<K,T>(this BinaryTreeNode<K, T> root, K minValue, K maxValue) where K : IComparable<K>
         {
             if (root == null)
                 return true;
 
-            return root.Key > minValue
-                   && root.Key < maxValue
+            return root.Key.CompareTo(minValue) > 0
+                   && root.Key.CompareTo(maxValue) < 0
                    && IsValidBstRec(root.Left, minValue, root.Key)
                    && IsValidBstRec(root.Right, root.Key, maxValue);
         }

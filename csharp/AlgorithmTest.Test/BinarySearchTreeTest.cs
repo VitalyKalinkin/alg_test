@@ -155,5 +155,60 @@ namespace AlgorithmTest.Test
 
             Assert.That(tree.SelectNth(100001), Is.EqualTo(0));
         }
+
+        [Test]
+        public void TraverseKeys()
+        {
+            var tree = new BinarySearchTree<int, int>();
+
+            foreach (var item in Enumerable.Range(0, 100000).ToList().Shuffle())
+            {
+                tree.Add(item, item * 2);
+            }
+
+            var actual = tree.TraverseKeys();
+            Assert.That(actual, Is.EqualTo(Enumerable.Range(0, 100000)));
+        }
+
+        [Test]
+        public void DeleteMin()
+        {
+            var tree = new BinarySearchTree<int, int>();
+
+            foreach (var item in Enumerable.Range(0, 100000).ToList().Shuffle())
+            {
+                tree.Add(item, item * 2);
+            }
+
+            foreach (var expected in Enumerable.Range(0, 100000))
+            {
+                tree.DeleteMin();
+                Assert.That(tree.ExactSearch(expected), Is.EqualTo(0));
+                Assert.That(tree.Size(), Is.EqualTo(100000 - expected - 1));
+            }
+
+            Assert.That(tree.Size(), Is.EqualTo(0));
+        }
+
+        [Test]
+        public void Delete()
+        {
+            var tree = new BinarySearchTree<int, int>();
+
+            foreach (var item in Enumerable.Range(0, 100000).ToList().Shuffle())
+            {
+                tree.Add(item, item * 2);
+            }
+
+            int index = 1;
+            foreach (var expected in Enumerable.Range(0, 100000).ToList().Shuffle())
+            {
+                tree.Delete(expected);
+                Assert.That(tree.ExactSearch(expected), Is.EqualTo(0));
+                Assert.That(tree.Size(), Is.EqualTo(100000 - index++));
+            }
+
+            Assert.That(tree.Size(), Is.EqualTo(0));
+        }
     }
 }

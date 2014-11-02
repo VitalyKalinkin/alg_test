@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Security.Cryptography;
 
 namespace AlgorithmTest
@@ -203,6 +204,86 @@ namespace AlgorithmTest
                 return SelectNth(root.Right, index - sizeLeft - 1);
             }
 
+            return root;
+        }
+
+        public IEnumerable<K> TraverseKeys()
+        {
+            return TraverseKeys(_root);
+        }
+
+        private static IEnumerable<K> TraverseKeys(BinaryTreeNode<K, T> root)
+        {
+            if (root == null)
+                return Enumerable.Empty<K>();
+            return TraverseKeys(root.Left).Concat(new[] {root.Key}).Concat(TraverseKeys(root.Right));
+        }
+
+        public void DeleteMin()
+        {
+            _root = DeleteMinRecursive(_root);
+        }
+
+        private BinaryTreeNode<K, T> DeleteMinRecursive(BinaryTreeNode<K, T> root)
+        {
+            if (root == null)
+                return null;
+
+            if (root.Left == null)
+                return root.Right;
+
+            root.Left = DeleteMinRecursive(root.Left);
+            root.Size = 1 + Size(root.Left) + Size(root.Right);
+            return root;
+        }
+
+        public K FindMin()
+        {
+            var min = FindMinRecursive(_root);
+            return min == null ? default(K) : min.Key;
+        }
+
+        private static BinaryTreeNode<K,T> FindMinRecursive(BinaryTreeNode<K, T> root)
+        {
+            if (root == null)
+                return null;
+
+            if (root.Left == null)
+                return root;
+
+            return FindMinRecursive(root.Left);
+        }
+
+        public void Delete(K key)
+        {
+            _root = DeleteRecursive(_root, key);
+        }
+
+        private BinaryTreeNode<K, T> DeleteRecursive(BinaryTreeNode<K, T> root, K key)
+        {
+            if (root == null)
+                return null;
+
+            var cmp = key.CompareTo(root.Key);
+
+            if (cmp < 0)
+                root.Left = DeleteRecursive(root.Left, key);
+            else if (cmp > 0)
+                root.Right = DeleteRecursive(root.Right, key);
+            else
+            {
+                if (root.Left == null)
+                    return root.Right;
+                if (root.Right == null)
+                    return root.Left;
+
+                var temp = root;
+                root = FindMinRecursive(root.Right);
+                root.Right = DeleteMinRecursive(temp.Right);
+                root.Left = temp.Left;
+            }
+
+            root.Size = 1 + Size(root.Left) + Size(root.Right);
             return root;
         }
     }

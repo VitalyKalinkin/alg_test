@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
@@ -200,15 +201,19 @@ namespace AlgorithmTest.Test
                 tree.Add(item, item * 2);
             }
 
-            int index = 1;
-            foreach (var expected in Enumerable.Range(0, 100000).ToList().Shuffle())
+            var index = 1;
+            var removed = new List<int>();
+            foreach (var expected in Enumerable.Range(0, 10000).ToList().Shuffle())
             {
                 tree.Delete(expected);
                 Assert.That(tree.ExactSearch(expected), Is.EqualTo(0));
                 Assert.That(tree.Size(), Is.EqualTo(100000 - index++));
+                removed.Add(expected);
             }
 
-            Assert.That(tree.Size(), Is.EqualTo(0));
+            Assert.That(tree.Size(), Is.EqualTo(90000));
+
+            Assert.That(tree.TraverseKeys(), Is.EqualTo(Enumerable.Range(0, 100000).Except(removed)));
         }
     }
 }

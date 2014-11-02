@@ -48,5 +48,21 @@ namespace AlgorithmTest
 
             return currentNode;
         }
+
+        public static bool IsValidBst<T>(this BinaryTreeNode<int, T> root)
+        {
+            return IsValidBstRec(root, int.MinValue, int.MaxValue);
+        }
+
+        private static bool IsValidBstRec<T>(BinaryTreeNode<int, T> root, int minValue, int maxValue)
+        {
+            if (root == null)
+                return true;
+
+            return root.Key > minValue
+                   && root.Key < maxValue
+                   && IsValidBstRec(root.Left, minValue, root.Key)
+                   && IsValidBstRec(root.Right, root.Key, maxValue);
+        }
     }
 }

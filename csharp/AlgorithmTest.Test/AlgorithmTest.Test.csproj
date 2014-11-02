@@ -59,6 +59,7 @@
     <Compile Include="MoreThanTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortingTest.cs" />
+    <Compile Include="ValidBstTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AlgorithmTest\AlgorithmTest.csproj">

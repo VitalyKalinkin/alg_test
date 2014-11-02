@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinarySearchTree.cs" />
+    <Compile Include="BinaryTreeNode.cs" />
     <Compile Include="HeapSort.cs" />
     <Compile Include="MaximumBinaryHeap.cs" />
     <Compile Include="BreadthFirstSearch.cs" />

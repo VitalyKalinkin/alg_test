@@ -18,13 +18,15 @@ namespace AlgorithmTest
             list[j] = temp;
         }
 
-        public static void Shuffle<T>(this IList<T> source)
+        public static IList<T> Shuffle<T>(this IList<T> source)
         {
             var rand = new Random();
             for (var i = 0; i < source.Count; ++i)
             {
                 source.Swap(i, rand.Next(i, source.Count));
             }
+
+            return source;
         }
 
         public static SingleLinkedListNode<T> GetNthNode<T>(this SingleLinkedListNode<T> head, int n)

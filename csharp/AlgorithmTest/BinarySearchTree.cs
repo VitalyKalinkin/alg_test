@@ -213,9 +213,10 @@ namespace AlgorithmTest
                 yield break;
 
             var traversalStack = new Stack<BinaryTreeNode<K, T>>();
-            var currentNode = _root;
+            traversalStack.Push(_root);
+            var currentNode = _root.Left;
 
-            while (true)
+            while (traversalStack.Count > 0 || currentNode != null)
             {
                 if (currentNode != null)
                 {
@@ -224,9 +225,6 @@ namespace AlgorithmTest
                 }
                 else
                 {
-                    if (traversalStack.Count == 0)
-                        yield break;
-
                     currentNode = traversalStack.Pop();
                     yield return currentNode.Key;
                     currentNode = currentNode.Right;

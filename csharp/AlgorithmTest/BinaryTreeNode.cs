@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace AlgorithmTest
 {
@@ -16,5 +17,12 @@ namespace AlgorithmTest
         public BinaryTreeNode<K, T> Left { get; set; }
         public BinaryTreeNode<K, T> Right { get; set; }
         public int Size { get; set; }
+
+        public RbColor Color { get; set; }
+    }
+
+    public enum RbColor
+    {
+        Red, Black
     }
 }

@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Security.Cryptography;
 
 namespace AlgorithmTest
 {
     public class BinarySearchTree<K, T> where K : IComparable<K>
     {
-        private BinaryTreeNode<K, T> _root;
+        protected BinaryTreeNode<K, T> _root;
 
-        public void Add(K key, T value)
+        public virtual void Add(K key, T value)
         {
             _root = AddRecusive(_root, key, value);
         }
@@ -158,7 +155,7 @@ namespace AlgorithmTest
             return Size(_root);
         }
 
-        private static int Size(BinaryTreeNode<K, T> root)
+        protected static int Size(BinaryTreeNode<K, T> root)
         {
             return root == null ? 0 : root.Size;
         }

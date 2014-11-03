@@ -55,6 +55,7 @@
     <Compile Include="LinkedListCycleDetector.cs" />
     <Compile Include="QuickSort.cs" />
     <Compile Include="QuickSelection.cs" />
+    <Compile Include="RedBlackBinarySearchTree.cs" />
     <Compile Include="SelectionSort.cs" />
     <Compile Include="MergeSort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

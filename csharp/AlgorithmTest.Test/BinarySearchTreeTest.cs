@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
@@ -214,6 +215,28 @@ namespace AlgorithmTest.Test
             Assert.That(tree.Size(), Is.EqualTo(90000));
 
             Assert.That(tree.TraverseKeys(), Is.EqualTo(Enumerable.Range(0, 100000).Except(removed)));
+        }
+
+        [Test]
+        public void Range()
+        {
+            var tree = new BinarySearchTree<int, int>();
+
+            foreach (var item in Enumerable.Range(0, 100000).ToList().Shuffle())
+            {
+                tree.Add(item, item * 2);
+            }
+
+            var random = new Random();
+            for (var i = 0; i < 100; i++)
+            {
+                var firstKey = random.Next(0, 100000);
+                var secondKey = random.Next(firstKey + 1, 100000);
+
+                var range = tree.Range(firstKey, secondKey);
+
+                Assert.That(range, Is.EqualTo(Enumerable.Range(firstKey, secondKey - firstKey + 1)));
+            }
         }
     }
 }

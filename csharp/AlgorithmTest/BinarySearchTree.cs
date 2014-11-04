@@ -210,8 +210,7 @@ namespace AlgorithmTest
                 yield break;
 
             var traversalStack = new Stack<BinaryTreeNode<K, T>>();
-            traversalStack.Push(_root);
-            var currentNode = _root.Left;
+            var currentNode = _root;
 
             while (traversalStack.Count > 0 || currentNode != null)
             {
@@ -295,6 +294,30 @@ namespace AlgorithmTest
 
             root.Size = 1 + Size(root.Left) + Size(root.Right);
             return root;
+        }
+
+        public IEnumerable<K> Range(K min, K max)
+        {
+            var traversalStack = new Stack<BinaryTreeNode<K, T>>();
+            var currentNode = _root;
+
+            while (traversalStack.Count > 0 || currentNode != null)
+            {
+                if (currentNode != null)
+                {
+                    traversalStack.Push(currentNode);
+                    currentNode = currentNode.Key.CompareTo(min) <= 0 ? null : currentNode.Left;
+                }
+                else
+                {
+                    var node = traversalStack.Pop();
+
+                    if (node.Key.CompareTo(min) >= 0 && node.Key.CompareTo(max) <= 0)
+                        yield return node.Key;
+
+                    currentNode = node.Key.CompareTo(max) >= 0 ? null : node.Right;
+                }
+            }
         }
     }
 }

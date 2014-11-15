@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GraphBipartatorTest.cs" />
     <Compile Include="RedBlackBinarySearchTreeTest.cs" />
     <Compile Include="BinarySearchTreeTest.cs" />
     <Compile Include="BreadthFirstSearchTest.cs" />

@@ -46,6 +46,9 @@
   <ItemGroup>
     <Compile Include="BinarySearchTree.cs" />
     <Compile Include="BinaryTreeNode.cs" />
+    <Compile Include="Graph.cs" />
+    <Compile Include="GraphBipartator.cs" />
+    <Compile Include="GraphNode.cs" />
     <Compile Include="HeapSort.cs" />
     <Compile Include="MaximumBinaryHeap.cs" />
     <Compile Include="BreadthFirstSearch.cs" />

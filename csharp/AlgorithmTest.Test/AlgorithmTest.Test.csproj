@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GraphBipartatorTest.cs" />
+    <Compile Include="GraphConstractor.cs" />
+    <Compile Include="GraphCycleDetectorTest.cs" />
     <Compile Include="RedBlackBinarySearchTreeTest.cs" />
     <Compile Include="BinarySearchTreeTest.cs" />
     <Compile Include="BreadthFirstSearchTest.cs" />

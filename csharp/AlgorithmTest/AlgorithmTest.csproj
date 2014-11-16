@@ -48,6 +48,7 @@
     <Compile Include="BinaryTreeNode.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="GraphBipartator.cs" />
+    <Compile Include="GraphCycleDetector.cs" />
     <Compile Include="GraphNode.cs" />
     <Compile Include="HeapSort.cs" />
     <Compile Include="MaximumBinaryHeap.cs" />

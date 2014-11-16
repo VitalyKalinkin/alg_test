@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NUnit.Framework.Constraints;
 
 namespace AlgorithmTest.Test
@@ -19,6 +15,65 @@ namespace AlgorithmTest.Test
         public static IResolveConstraint Sorted<T>() where T : IComparable<T>
         {
             return new SortedConstraintResolver<T>((x, y) => x.CompareTo(y));
+        }
+
+        public static IResolveConstraint InTopologicalOrder<T>(Graph<T> g)
+        {
+            return new TopologicalConstraintResolver<T>(g);
+        }
+    }
+
+    internal class TopologicalConstraintResolver<T> : IResolveConstraint
+    {
+        private Graph<T> g; 
+
+        public TopologicalConstraintResolver(Graph<T> graph)
+        {
+            g = graph;
+        }
+        public Constraint Resolve()
+        {
+            return new TopologicalConstraint<T>(g);
+        }
+    }
+
+    internal class TopologicalConstraint<T> : Constraint
+    {
+        private Graph<T> g;
+        private IEnumerable<GraphNode<T>> _enumerable;
+        private List<GraphNode<T>> _passed;
+
+        public TopologicalConstraint(Graph<T> graph)
+        {
+            g = graph;
+        }
+
+        public override bool Matches(object actual)
+        {
+            _enumerable = actual as IEnumerable<GraphNode<T>>;
+
+            if (_enumerable == null)
+                throw new ArgumentException(String.Format("Argument must be not null and has type {0}", typeof(IEnumerable<T>).ToString()), "actual");
+
+            _passed = new List<GraphNode<T>>();
+
+            foreach (var graphNode in _enumerable)
+            {
+                if (_passed.Intersect(graphNode.Adjuscens).Any())
+                {
+                    return false;
+                }
+
+                _passed.Add(graphNode);
+            }
+
+            return true;
+        }
+
+        public override void WriteDescriptionTo(MessageWriter writer)
+        {
+            writer.WriteMessageLine("An enumerable sorting failed at index {0}", _passed.Count);
+            writer.WriteActualValue(_enumerable);
         }
     }
 

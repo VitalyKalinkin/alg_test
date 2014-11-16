@@ -67,6 +67,7 @@
     <Compile Include="ShellSort.cs" />
     <Compile Include="SingleLinkedListNode.cs" />
     <Compile Include="StreamSelection.cs" />
+    <Compile Include="TopologicalSort.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

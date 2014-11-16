@@ -29,6 +29,7 @@ namespace AlgorithmTest.Test
 
             var actual = TopologicalSort.TopologicallySort(g).ToList();
             Assert.That(actual, MoreThan.InTopologicalOrder(g));
+            Assert.That(actual.Count, Is.EqualTo(g.Nodes.Count()));
         }
     }
 }

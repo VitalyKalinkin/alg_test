@@ -26,7 +26,17 @@ namespace AlgorithmTest.Test
                 {12, new[] {9}},
             });
 
-            Assert.That(GraphCycleDetector.DetectCycle(g), Is.EquivalentTo(new[] {g[4], g[5], g[0], g[2]}));
+            Assert.That(GraphCycleDetector.DetectAllCycles(g), Is.EquivalentTo(new[]
+            {
+                new []{g[0], g[5], g[4], g[2]},
+                new []{g[0], g[5], g[4], g[3], g[2]},
+                new []{g[3], g[5], g[4]},
+                new []{g[2], g[3], g[5], g[4]},
+                new []{g[2], g[3]},
+                new []{g[9], g[10], g[12]},
+                new []{g[9], g[11], g[12]},
+                new []{g[7], g[8]},
+            }));
         }
 
         [Test]
@@ -49,7 +59,7 @@ namespace AlgorithmTest.Test
                 {12, new[] {9}},
             });
 
-            Assert.That(GraphCycleDetector.DetectCycle(g), Is.Empty);
+            Assert.That(GraphCycleDetector.DetectAllCycles(g), Is.Empty);
         }
     }
 }

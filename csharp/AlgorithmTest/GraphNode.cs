@@ -30,7 +30,7 @@ namespace AlgorithmTest
 
         public override string ToString()
         {
-            return string.Format("Value: {0}", _value);
+            return string.Format("{0}", _value);
         }
     }
 }

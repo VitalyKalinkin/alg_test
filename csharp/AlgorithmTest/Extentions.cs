@@ -64,5 +64,25 @@ namespace AlgorithmTest
                    && IsValidBstRec(root.Left, minValue, root.Key)
                    && IsValidBstRec(root.Right, root.Key, maxValue);
         }
+
+        public static Graph<T> Reverse<T>(this Graph<T> g)
+        {
+            var result = new Graph<T>();
+
+            foreach (var node in g.Nodes)
+            {
+                result.AddNode(new GraphNode<T>(node.Value));
+            }
+
+            foreach (var node in g.Nodes)
+            {
+                foreach (var adjuscen in node.Adjuscens)
+                {
+                    result[adjuscen.Value].AddAdjuscent(result[node.Value]);
+                }
+            }
+
+            return result;
+        } 
     }
 }

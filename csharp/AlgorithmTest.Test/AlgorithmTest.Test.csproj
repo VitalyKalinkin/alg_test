@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExpressionEvaluatorTest.cs" />
     <Compile Include="GraphBipartatorTest.cs" />
     <Compile Include="GraphConstractor.cs" />
     <Compile Include="GraphCycleDetectorTest.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortingTest.cs" />
     <Compile Include="StrongLinkedComponentsDetectorTest.cs" />
+    <Compile Include="TokenExpensions.cs" />
     <Compile Include="TopologicalSortTest.cs" />
     <Compile Include="ValidBstTest.cs" />
   </ItemGroup>
